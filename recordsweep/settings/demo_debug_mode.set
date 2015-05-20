@@ -1,0 +1,4 @@
+Time(s), TIME, , Time, 
+Flow(mbarl/s), HLT560, GPIB0::0, FLOW, 
+A(K), LS340, GPIB0::1, A, 
+dt(s), TIME, , dt, 

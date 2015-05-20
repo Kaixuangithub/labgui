@@ -1,0 +1,5 @@
+FLOW(mbarl/s), PL300, GPIB0::1, FLOW, 
+A(K), LS340, GPIB0::11, A, 
+B(K), LS340, GPIB0::11, B, 
+PHASE(degrees), SRS830, GPIB0::5, PHASE, 
+, TIME, , dt, 

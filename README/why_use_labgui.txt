@@ -1,0 +1,98 @@
+
+Hello I am Pierre-Francois Duc I am a grad student in experimental condensed matter at McGill university
+
+Today I am going to give you an introduction to a automated measurements project we co-created with Benjamin Schmidt another grad student from my lab. 
+
+I will use a simple physical problem as an example to highlight why you might want to use our program as a foundation block to build you own automated experimental setup. If you decide to use LabGui for you own experiment, we will be happy to help you get started using it by holding an introductory workshop at McGill on May 19, from noon till 4pm. To learn more contact us at rtech@physics.mcgill.ca and check our Facebook https://www.facebook.com/RTechMcGill We also have some funds to help cover transportation costs for the participants.
+
+As an experimental scientist one needs to perform measurements. The easiest way is the manual one. Let's see how this works with the following simple example : you are given an unknown resistor and you need to determine its resistance via measurements. You are fortunately aware of Ohm's law which states that the the resistance is the proportionality constant between voltage and current. Therefore you decide to connect your resistor to a current source and measure the voltage across it.
+
+We do a first measurement : we apply a known current ...  and we measure the voltage ... then we report that on a graph
+
+We then repeat the procedure : we apply a known current ... , we measure the voltage ... and we report that on a graph
+
+In order to reduce your error on the measurement you need to repeat that a lot of time (for the current example and for simplicity we chose 5 times) ... and this is the result ... and this is the graph
+
+Thankfully the relation seems to be linear ... we can use a linear regression method on the data set to extract the slope which is equal to the resistance we wanted to determine in the first place ... good job, you succeeded!
+
+Now that we are done let's ask ourselves : is this really a job for a student? ... No ...
+
+
+STOP
+
+
+
+There are ways to automate that process and do much more! Let's look into that : ... Today almost all measurement devices have the possibility to be controlled by a computer
+
+I will show you how you would typically carry the same Ohm's law experiment using the computer software we designed : LabGui
+
+
+
+
+
+First of all, no need to turns some knobs or look at different instruments screens, you control all of them from your computer and you can perform one measurement with a simple clic!
+
+This is what the script looks like in LabGui for that particular experiment.
+
+Like before : we apply a known current and measure the voltage ... then we report that on a graph
+"
+You need to that more than once for better statistics? No problem! You simply add a FOR loop ...click only once and get all your measurements done
+
+What about fitting the slope to get the resistance? ... the data are already on your computer, you can run a fit procedure on them with a simple click ... and get the fit parameters!
+
+
+What about non linear fitting? ... ... You can fit any function on your data! ... Select the function you would like to fit (remove one slide), click ... and see the result! If Ohm's law would have this complicated form this would be the result.
+
+
+If you want to repeat the same experiment more than once to get better statistics it is easy, simply add another FOR loop (remove the word time).
+
+This way you can already see the fit of the data which are already taken while acquiring more data! And even change fitting function back and forth if you like to do so! ... You can also go and grab a coffee while your experiment is running!
+
+
+A bonus feature : you can receive an email when you experiment is finished or if something happens and enjoy the sun outside!
+
+Now you can say : but I am already using labview to perform my measurements, why should I use LabGui?
+
+Let's compare their key features !
+
+For both LabGui and LabView all the instruments speak one language, once a driver is written or given, the communication with the instrument can be established.
+
+This is can be done both in Labview and LabGui. So, LabGui can do this as well as Labview...
+
+
+Second thing I would like to mention is that LabGui is a programming language and Labview is a graphical programming language, and you actually care about this difference if you are dealing with a complex project. I will first show you and example of code in python ... and in labview ...,  as you can see labview doesn't use text based code but a flow chart.
+This is powerful to rapidly implement simple programs, but when the program becomes more complex you get into this... (show labview WTF slide).
+
+Labview makes the easy things easier and the hard things harder ... the learning curve of graphical programming language is	lower but so is the productivity.
+
+One of the advantages of a programming language is much more convenient version control.
+
+Moreover it is cumbersome and slow to use a graphical programming language over SSH and on old computers.
+
+... (showing the comparison chart again)
+
+Proprietary vs open source software
+
+You can access all the code, we don't hide anything from you, if you want to modify some part of the code to better suit your needs this is important. Open source doesn't mean there is no license, we have a license which forbids one to take our code and make profit out of it, copy is allowed, modification is allowed, profit is not. This brings us to our next point ... this software is free of charges, while labview is costly. And most of the time we use only a small portion of the features we pay for!
+
+Another advantage is that you can use any text editor to write your code in python, some of them will even allow you to run your code directly from the text editor...(pop up pycharm and spyder) ... With labview you can only use the program on a limited number of computers depending on which license you pick... Speaking of license I want to underline the fact that labview backward compatibility is not the best ...: this is a table of all possible combinations of "save in one version" "open in the other". Green means you wouldn't need to buy a newer version of LabView, if you'd like to continue working on a project, while red means you will have to pay for that. As you can see using LabView might cost you more, than you expect, while our package will be always free.
+
+Last but not least, the python community is huge, so new packages develop really fast, since I started using it many packages became even better! ... also many scientists use python to analyse, acquire and plot their data, paper-quality data and graphs!
+
+At last here is a little summary of the points of comparison between labview and labgui
+
+You can download LabGui and start using it on your own or drop by our workshop and let us help you get started customizing LabGui for your needs. We'll also be happy to answer you questions by email.
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+

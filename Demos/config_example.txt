@@ -1,0 +1,8 @@
+COOLDOWN=TEST
+SAMPLE=sample_name
+DATA_PATH=
+DEBUG=True
+DRIVERS=..\drivers
+SCRIPT=script_demo_current_voltage.py
+SETTINGS=demo_current_voltage.set
+DATAFILE=
