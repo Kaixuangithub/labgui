@@ -444,7 +444,15 @@ class PlotDisplayWindow(QtGui.QMainWindow, ui_plotdisplaywindow.Ui_PlotDisplayWi
 
         if self.data_array.size>0 :
             # if the number of columns is more than the number of control boxes
-            while self.num_channels < self.data_array.shape[1]:
+            
+            try:
+                #if the window was deleted the shape of the very first vector is (num_channel,)
+                #and then become (nline,num_channel)
+                num_channel=self.data_array.shape[1]
+            except:
+                num_channel=self.data_array.size
+                
+            while self.num_channels <  num_channel:
                 self.add_channel_controls()
 
                             

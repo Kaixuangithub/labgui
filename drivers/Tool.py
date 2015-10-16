@@ -6,16 +6,9 @@ Created on Fri Jun 21 17:19:35 2013
 """
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
-try:
-    from PyQt4.QtCore import QString
-except ImportError:
-    QString = str
 
-try:
-    _fromUtf8 = QString.fromUtf8
-except AttributeError:
-    _fromUtf8 = lambda s: s
-    
+import logging
+logging.basicConfig(level=logging.CRITICAL, format='%(asctime)s:%(levelname)s:%(message)s')
 
 try:
     import visa
@@ -186,7 +179,7 @@ class MeasInstr(object):
                     if old_visa:
                         self.connexion=visa.instrument(resource_name,**keyw)
                     else:
-                        print "using new PyVisa > 1.4"
+                        print("using new PyVisa > 1.4")
                         self.connexion=self.resource_manager.get_instrument(resource_name,**keyw)
                 elif self.communication_protocole=="serial":
                     
@@ -391,7 +384,7 @@ class InstrumentHub(QObject):
                 else:
                     obj=class_inst.Instrument(device_port,self.debug)
                 self.instrument_list[device_port] = obj
-        
+                logging.debug(obj.identify()+" connected")
         #I should have commented why I did this, I don't remember...
         #I think without that it was not working well
         if instr_name!='' and instr_name!= 'NONE':

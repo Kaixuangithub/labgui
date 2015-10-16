@@ -35,6 +35,9 @@ from collections import OrderedDict
 #import PyQtWindow
 import PlotDisplayWindow
 
+import logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(message)s')
+
 
 def pfcount(objet):
     i=0
@@ -730,10 +733,11 @@ class fp(QtGui.QMainWindow):
        
     def update_data_array(self, data_set): 
         """ slot for when the thread emits data """ 
-        
-        #convert this latest data to an array        
+#convert this latest data to an array        
         data = np.array(data_set)
-
+        
+        logging.debug("shape of self.data_array %s\n shape of data %s"%(self.data_array.shape,data.shape))
+        
         for calculation in self.calcWidget.get_calculation_list():
             calculation = calculation.strip()
             if calculation:
@@ -751,13 +755,14 @@ class fp(QtGui.QMainWindow):
             # need to make sure the shape is 2D even though there's only 
             # one line of data so far
             self.data_array.shape = [1, self.data_array.size]
-        else:            
+        else: 
             # vstack just appends the data
+            
             try:
                 self.data_array = np.vstack([self.data_array, data]) 
             except:
                 self.data_array = data
-   
+                    
         self.emit(SIGNAL("data_array_updated(PyQt_PyObject)"), self.data_array)
         
     def connect_instrument_hub(self,signal=True):
